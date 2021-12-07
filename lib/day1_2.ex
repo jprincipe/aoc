@@ -49,6 +49,5 @@ defmodule AOC.Day1_2 do
     |> IO.inspect(label: "count")
   end
 
-  defp parse_reading(value) when is_integer(value), do: value
-  defp parse_reading(value) when is_bitstring(value), do: value |> String.trim() |> String.to_integer()
+  defp parse_reading(value), do: value |> String.trim() |> String.to_integer()
 end
