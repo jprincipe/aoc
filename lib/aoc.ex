@@ -23,4 +23,7 @@ defmodule AOC do
 
   def day4_1, do: AOC.Day4_1.run("lib/inputs/day4.txt")
   def day4_2, do: AOC.Day4_2.run("lib/inputs/day4.txt")
+
+  def day5_1, do: AOC.Day5_1.run("lib/inputs/day5.txt")
+  def day5_2, do: AOC.Day5_2.run("lib/inputs/day5.txt")
 end
