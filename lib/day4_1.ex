@@ -98,7 +98,7 @@ defmodule AOC.Day4_1 do
     Enum.reduce_while(numbers, boards, fn number, boards ->
       boards = Enum.map(boards, &mark_board(&1, number))
 
-      if board = Enum.find(boards, &check_board/1) do
+      if board = Enum.find(boards, &winner?/1) do
         {:halt, unmarked_sum(board) * number}
       else
         {:cont, boards}
@@ -113,22 +113,15 @@ defmodule AOC.Day4_1 do
     end
   end
 
-  defp check_board(board) do
+  defp winner?(board) do
     winning_row = Enum.find(0..4, fn row -> row_winner?(board, row) end)
     winning_col = Enum.find(0..4, fn col -> col_winner?(board, col) end)
 
-    cond do
-      winning_row -> row_numbers(board, winning_row)
-      winning_col -> col_numbers(board, winning_col)
-      true -> nil
-    end
+    winning_row || winning_col
   end
 
   defp row_winner?(board, row), do: board |> row_squares(row) |> Enum.count(fn {_position, {_number, marked}} -> marked end) |> Kernel.==(5)
   defp col_winner?(board, col), do: board |> col_squares(col) |> Enum.count(fn {_position, {_number, marked}} -> marked end) |> Kernel.==(5)
-
-  defp row_numbers(board, row), do: board |> row_squares(row) |> Enum.map(fn {_position, {number, _marked}} -> number end)
-  defp col_numbers(board, row), do: board |> col_squares(row) |> Enum.map(fn {_position, {number, _marked}} -> number end)
 
   defp col_squares(board, col), do: Enum.filter(board, fn {position, _} -> col == elem(position, 1) end)
   defp row_squares(board, row), do: Enum.filter(board, fn {position, _} -> row == elem(position, 0) end)
