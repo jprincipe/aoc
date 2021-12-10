@@ -1,21 +1,12 @@
 # AOC
 
-**TODO: Add description**
+My implementation of the 2021 [Advent of Code](https://adventofcode.com)
 
-## Installation
+## Compile & Run
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `aoc` to your list of dependencies in `mix.exs`:
+All days are implemented with a wrapping function in the format of `day<day num>_<part 1/2>`
 
-```elixir
-def deps do
-  [
-    {:aoc, "~> 0.1.0"}
-  ]
-end
+```bash
+?> mix compile
+?> mix run -e "AOC.day1_1()"
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/aoc>.
-
